@@ -3,11 +3,11 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Residencia frente al mar en Playas de Tijuana | $439,000 USD — Granizo Properties',
+  title: 'Residencia cerca del mar en Playas de Tijuana | $439,000 USD — Granizo Properties',
   description:
     'Amplia residencia en la Sección Monumental de Playas de Tijuana. 3 recámaras, a 10 min de la frontera y a 3 cuadras del nuevo Malecón. Agenda tu cita con el asesor.',
   openGraph: {
-    title: 'Residencia frente al mar en Playas de Tijuana | $439,000 USD',
+    title: 'Residencia cerca del mar en Playas de Tijuana | $439,000 USD',
     description:
       'Amplia residencia en la Sección Monumental de Playas de Tijuana. 3 recámaras, a unos 10 min de la frontera. Agenda tu cita con el asesor.',
     type: 'website',
