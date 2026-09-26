@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { MapPin } from "lucide-react"
 import { PREAPRUEBA_URL, WHATSAPP_URL } from "@/lib/links"
+import { PhotoWatermark } from "./photo-watermark"
 
 /* Marca de 7 puntos (SOC / Sinergia), dibujada como SVG para que se vea nitida a cualquier tamano */
 function SocMark({ className }: { className?: string }) {
@@ -59,7 +60,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-balance text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            ¿Trabajas en San Diego pero sueñas con vivir frente al mar?
+            ¿Trabajas en San Diego pero sueñas con vivir cerca del mar?
           </motion.h1>
 
           <motion.p
@@ -121,12 +122,13 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <div className="overflow-hidden rounded-3xl shadow-2xl shadow-black/50 ring-1 ring-white/15">
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-black/50 ring-1 ring-white/15">
             <img
               src="/images/fachada.jpg"
               alt="Fachada de la residencia en la Sección Monumental, Playas de Tijuana"
               className="aspect-[4/3] w-full object-cover"
             />
+            <PhotoWatermark />
           </div>
         </motion.div>
       </div>

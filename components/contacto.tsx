@@ -20,8 +20,8 @@ export function Contacto() {
             Agenda tu cita con el asesor inmobiliario y conoce la residencia en persona.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-pretty text-lg text-slate-600">
-            Déjanos ayudarte a dar el siguiente paso hacia tu nueva vida frente
-            al mar.
+            Déjanos ayudarte a dar el siguiente paso hacia tu nueva vida cerca
+            del mar.
           </p>
         </Reveal>
 
