@@ -17,7 +17,7 @@ const espacios = [
   {
     icon: Warehouse,
     title: "Comodidad",
-    description: "Estacionamiento techado, patio frontal y patio trasero.",
+    description: "Estacionamiento techado para 1 vehículo, patio frontal y patio trasero.",
   },
   {
     icon: Droplets,
