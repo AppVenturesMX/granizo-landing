@@ -6,6 +6,15 @@ export const metadata: Metadata = {
   title: 'Residencia cerca del mar en Playas de Tijuana | $439,000 USD — Granizo Properties',
   description:
     'Amplia residencia en la Sección Monumental de Playas de Tijuana. 3 recámaras, a 10 min de la frontera y a 3 cuadras del nuevo Malecón. Agenda tu cita con el asesor.',
+  // Esta landing es una versión de campaña (ads, WhatsApp) de la misma
+  // propiedad que ya vive en bienesraiceshub.com/propiedad/granizo-playas-tijuana.
+  // El canonical marca al Hub como la versión preferida para Google, para
+  // que el contenido duplicado entre ambos hosts no se reparta la
+  // autoridad de búsqueda. Ver claude/estrategia-seo-google-oct-2026.md,
+  // sección 1.
+  alternates: {
+    canonical: 'https://www.bienesraiceshub.com/propiedad/granizo-playas-tijuana',
+  },
   openGraph: {
     title: 'Residencia cerca del mar en Playas de Tijuana | $439,000 USD',
     description:
