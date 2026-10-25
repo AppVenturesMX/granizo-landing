@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 import { PhotoWatermark } from "@/components/photo-watermark"
+import type { LivePhoto } from "@/lib/live-property"
 
-const fotos = [
+const fotosDefault = [
   { src: "/images/fachada.jpg", alt: "Fachada de la residencia con cochera y portón" },
   { src: "/images/sala-2.jpg", alt: "Sala amplia con ventilador de techo y sofás" },
   { src: "/images/sala.jpg", alt: "Sala con chimenea decorativa y área de descanso" },
@@ -23,14 +24,22 @@ const fotos = [
   { src: "/images/patio-lateral.jpg", alt: "Patio interior con piso de ladrillo" },
 ]
 
-export function Galeria() {
+type GaleriaProps = {
+  // Galería en vivo desde el panel del Hub (ver lib/live-property.ts).
+  // Si viene vacía/null (Hub caído, sin mergear todavía, etc.) se usa la
+  // galería fija de siempre.
+  live?: { gallery: LivePhoto[] } | null
+}
+
+export function Galeria({ live }: GaleriaProps) {
+  const fotos = live?.gallery && live.gallery.length > 0 ? live.gallery : fotosDefault
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(0)
 
   const go = useCallback((dir: number) => {
     setDirection(dir)
     setIndex((prev) => (prev + dir + fotos.length) % fotos.length)
-  }, [])
+  }, [fotos.length])
 
   useEffect(() => {
     const id = setInterval(() => go(1), 5000)
