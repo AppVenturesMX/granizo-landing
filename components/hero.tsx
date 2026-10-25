@@ -128,7 +128,7 @@ export function Hero() {
               alt="Fachada de la residencia en la Sección Monumental, Playas de Tijuana"
               className="aspect-[4/3] w-full object-cover"
             />
-            <PhotoWatermark />
+            <PhotoWatermark variant="full" />
           </div>
         </motion.div>
       </div>
