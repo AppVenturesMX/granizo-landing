@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { MapPin } from "lucide-react"
 import { PREAPRUEBA_URL, WHATSAPP_URL } from "@/lib/links"
+import type { LivePhoto } from "@/lib/live-property"
 import { PhotoWatermark } from "./photo-watermark"
 
 /* Marca de 7 puntos (SOC / Sinergia), dibujada como SVG para que se vea nitida a cualquier tamano */
@@ -39,7 +40,23 @@ function WhatsAppIcon({ className }: { className?: string }) {
 const ctaClass =
   "inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-emerald-500 px-7 py-3.5 text-base font-semibold text-emerald-950 shadow-lg shadow-emerald-950/40 transition-colors hover:bg-emerald-400 sm:w-auto sm:min-w-[270px]"
 
-export function Hero() {
+type HeroProps = {
+  // Precio y foto de fachada en vivo desde el panel del Hub (ver
+  // lib/live-property.ts). null/undefined (Hub caído, sin mergear
+  // todavía, etc.) usa el contenido fijo de siempre.
+  live?: { heroImage: LivePhoto; price: number } | null
+}
+
+const DEFAULT_HERO_IMAGE: LivePhoto = {
+  src: "/images/fachada.jpg",
+  alt: "Fachada de la residencia en la Sección Monumental, Playas de Tijuana",
+}
+const DEFAULT_PRICE = 439000
+
+export function Hero({ live }: HeroProps) {
+  const heroImage = live?.heroImage ?? DEFAULT_HERO_IMAGE
+  const price = live?.price ?? DEFAULT_PRICE
+
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950">
       <div className="mx-auto grid min-h-[85vh] max-w-6xl items-start gap-10 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:pb-20 lg:pt-32">
@@ -80,7 +97,7 @@ export function Hero() {
             className="flex items-baseline gap-2"
           >
             <span className="text-4xl font-extrabold text-white sm:text-5xl">
-              $439,000
+              ${price.toLocaleString("en-US")}
             </span>
             <span className="text-lg font-semibold text-emerald-400">USD</span>
           </motion.div>
@@ -124,8 +141,8 @@ export function Hero() {
         >
           <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-black/50 ring-1 ring-white/15">
             <img
-              src="/images/fachada.jpg"
-              alt="Fachada de la residencia en la Sección Monumental, Playas de Tijuana"
+              src={heroImage.src}
+              alt={heroImage.alt}
               className="aspect-[4/3] w-full object-cover"
             />
             <PhotoWatermark />
