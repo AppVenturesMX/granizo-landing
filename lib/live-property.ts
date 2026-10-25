@@ -25,26 +25,26 @@ const SLUG = "granizo-playas-tijuana"
 // Las rutas de foto que vienen de la tabla properties del Hub pueden ser
 // relativas (las 7 propiedades migradas desde lib/properties.ts, ej.
 // "/images/properties/granizo-playas-tijuana/fachada.jpg", que solo existen
-// en el dominio del Hub) o absolutas (fotos subidas despuÃ©s con el botÃ³n
+// en el dominio del Hub) o absolutas (fotos subidas después con el botón
 // "Subir fotos" del panel, que van a Vercel Blob y ya traen su propio
-// https://...). Esta landing vive en su propio dominio aparte, asÃ­ que toda
-// ruta relativa hay que resolverla contra el Hub explÃ­citamente.
+// https://...). Esta landing vive en su propio dominio aparte, así que toda
+// ruta relativa hay que resolverla contra el Hub explícitamente.
 function resolveImageSrc(src: string): string {
   return src.startsWith("http") ? src : `${HUB_ORIGIN}${src}`
 }
 
-// Trae el precio y las fotos (hero + galerÃ­a) que Alex puede actualizar
+// Trae el precio y las fotos (hero + galería) que Alex puede actualizar
 // desde /admin/propiedades/administrar/granizo-playas-tijuana en el Hub,
-// sin necesitar un cambio de cÃ³digo en este repo aparte. El tÃ­tulo,
-// descripciÃ³n y demÃ¡s copy de esta landing siguen fijos en el cÃ³digo a
-// propÃ³sito â cada landing tiene su propio gancho de marketing escrito a
-// mano, distinto del campo "tÃ­tulo" genÃ©rico que usa el Hub, asÃ­ que no se
-// sincroniza automÃ¡ticamente (evita que un texto pensado para el Hub pise
-// el copy ya afinado de esta pÃ¡gina). Si se quiere sincronizar tambiÃ©n el
-// texto mÃ¡s adelante, es un cambio aparte.
+// sin necesitar un cambio de código en este repo aparte. El título,
+// descripción y demás copy de esta landing siguen fijos en el código a
+// propósito — cada landing tiene su propio gancho de marketing escrito a
+// mano, distinto del campo "título" genérico que usa el Hub, así que no se
+// sincroniza automáticamente (evita que un texto pensado para el Hub pise
+// el copy ya afinado de esta página). Si se quiere sincronizar también el
+// texto más adelante, es un cambio aparte.
 //
-// Nunca debe tronar ni dejar la pÃ¡gina en blanco: cualquier falla (Hub
-// caÃ­do, el PR del endpoint pÃºblico todavÃ­a sin mergear, red, etc.) regresa
+// Nunca debe tronar ni dejar la página en blanco: cualquier falla (Hub
+// caído, el PR del endpoint público todavía sin mergear, red, etc.) regresa
 // null y los componentes usan su contenido fijo de siempre.
 export async function getLiveGranizoPhotos(): Promise<LiveGranizoData | null> {
   try {
